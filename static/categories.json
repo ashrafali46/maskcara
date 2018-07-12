@@ -1,0 +1,112 @@
+{
+    "data": [
+        {
+            "id": 18,
+            "parent_id": 3,
+            "title": "Face",
+            "slug": "face",
+            "children": [
+                {
+                    "id": 23,
+                    "parent_id": 18,
+                    "title": "Highlight",
+                    "slug": "highlight",
+                    "children": []
+                },
+                {
+                    "id": 24,
+                    "parent_id": 18,
+                    "title": "Contour",
+                    "slug": "contour",
+                    "children": []
+                },
+                {
+                    "id": 25,
+                    "parent_id": 18,
+                    "title": "Lip +Cheek ",
+                    "slug": "lip-cheek",
+                    "children": []
+                },
+                {
+                    "id": 26,
+                    "parent_id": 18,
+                    "title": "Illuminator",
+                    "slug": "illuminator",
+                    "children": []
+                },
+                {
+                    "id": 27,
+                    "parent_id": 18,
+                    "title": "Setting Powder",
+                    "slug": "setting-powder",
+                    "children": []
+                },
+                {
+                    "id": 48,
+                    "parent_id": 18,
+                    "title": "Bronzer",
+                    "slug": "bronzer",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "parent_id": 3,
+            "title": "Eyes",
+            "slug": "eyes",
+            "children": [
+                {
+                    "id": 28,
+                    "parent_id": 19,
+                    "title": "Eye Shadow",
+                    "slug": "eye-shadow",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "parent_id": 3,
+            "title": "Skin",
+            "slug": "skin",
+            "children": []
+        },
+        {
+            "id": 21,
+            "parent_id": 3,
+            "title": "Brushes & Tools",
+            "slug": "brushes-tools",
+            "children": [
+                {
+                    "id": 29,
+                    "parent_id": 21,
+                    "title": "Brushes",
+                    "slug": "brushes",
+                    "children": []
+                },
+                {
+                    "id": 30,
+                    "parent_id": 21,
+                    "title": "Compacts",
+                    "slug": "compacts",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "parent_id": 3,
+            "title": "Collections",
+            "slug": "collections",
+            "children": []
+        },
+        {
+            "id": 50,
+            "parent_id": 3,
+            "title": "New Releases",
+            "slug": "new-releases",
+            "children": []
+        }
+    ]
+}
