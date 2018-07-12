@@ -2,7 +2,7 @@
   <div id="app">
     <div class="wrapper">
       <!-- Sidebar -->
-      <navigation isActive = isActive></navigation>
+      <navigation isActive=i sActive></navigation>
 
       <!-- Page Content Holder -->
       <div id="content">
@@ -58,6 +58,10 @@
     font-weight: 300;
     line-height: 1.7em;
     color: #999;
+  }
+
+  ol, ul{
+    margin-bottom: 0 !important;
   }
 
   a,
@@ -127,9 +131,11 @@
   }
 
   #sidebar ul li a {
-    padding: 10px;
+    padding: 20px 25px 20px;
     font-size: 1.1em;
     display: block;
+    text-transform: uppercase;
+    border-top: 1px solid #ffffff14;
   }
 
   #sidebar ul li a:hover {

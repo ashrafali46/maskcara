@@ -2,7 +2,7 @@
   <div>
     <nav id="sidebar" v-bind:class="{active: isActive}">
       <div class="sidebar-header">
-        <h3>Maskcara</h3>
+        <h3>MASKCARA</h3>
       </div>
       <!-- {{navCategories}} -->
       <ul class="list-unstyled components" v-for="(item, index) in navCategories.data" :key="index">
