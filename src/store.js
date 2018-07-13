@@ -7,16 +7,24 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     categories: [],
+    productCategory: [],
     isActive: false,
   },
   getters: {
-    categories: state => state.categories,
-
+    //navigation toggle
     isActive: state => state.isActive,
+
+    //product data
+    categories: state => state.categories,
+    productCategory: state => state.productCategory,
   },
   mutations: {
     SET_CATEGORIES(state, categories) {
       state.categories = categories
+    },
+
+    SET_PRODUCT_CATEGORY(state, productCategory) {
+      state.productCategory = productCategory
     },
 
     TOGGLE(state) {
@@ -28,8 +36,17 @@ export default new Vuex.Store({
       Axios.get('http://localhost:8080/static/categories.json')
         .then(r => r.data)
         .then(categories => {
-          console.log(categories);
+          //console.log(categories);
           commit('SET_CATEGORIES', categories)
+        })
+    },
+
+    getProductCategory({commit}) {
+      Axios.get('http://localhost:8080/static/category.json')
+        .then(r => r.data)
+        .then(categories => {
+          console.log(categories);
+          commit('SET_PRODUCT_CATEGORY', categories)
         })
     },
     

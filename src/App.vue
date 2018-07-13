@@ -14,6 +14,7 @@
                 <i class="glyphicon glyphicon-align-left"></i>
                 <span>Toggle Sidebar</span>
               </button>
+              <img src="https://www.maskcarabeauty.com/images/maskcara-logo-black.png" class="logo" alt="">
             </div>
           </div>
         </nav>
@@ -70,6 +71,13 @@
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
+  }
+
+  .logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
   }
 
   .navbar {
@@ -208,6 +216,7 @@
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    width: 100%;
   }
 
   /* ---------------------------------------------------
