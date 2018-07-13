@@ -5,12 +5,12 @@
         <h3>MASKCARA </h3>
       </div>
       <!-- {{navCategories}} -->
-      <ul class="list-unstyled components" v-for="(item, index) in navCategories.data" :key="index">
+      <ul class="list-unstyled components" v-for="(parent, index) in navCategories.data" :key="index">
         <li>
-          <a data-toggle="collapse" aria-expanded="false">{{item.title}}</a>
-          <ul class="collapse list-unstyled" >
-            <li>
-              <a href="#">{{item.title}}</a>
+          <a data-toggle="collapse" v-bind:href="'#id' + parent.id" aria-expanded="false">{{parent.title}}</a>
+          <ul class="collapse" v-bind:id="'id'+ parent.id" >
+            <li v-for="(child, index) in parent.children" :key="index">
+              <a href="#">{{child.title}}</a>
             </li>
           </ul>
         </li>
