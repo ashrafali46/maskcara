@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-  import navigation from './components/nav/navigation'
+  import navigation from './components/navigation'
   export default {
     name: 'App',
     data() {
