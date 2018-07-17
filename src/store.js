@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     categories: [],
     productCategory: [],
+    productDetail: [],
     isActive: false,
   },
   getters: {
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     //product data
     categories: state => state.categories,
     productCategory: state => state.productCategory,
+    productDetail: state => state.productDetail,
   },
   mutations: {
     SET_CATEGORIES(state, categories) {
@@ -25,6 +27,10 @@ export default new Vuex.Store({
 
     SET_PRODUCT_CATEGORY(state, productCategory) {
       state.productCategory = productCategory
+    },
+
+    SET_PRODUCT_DETAIL(state, productDetail) {
+      state.productDetail = productDetail
     },
 
     TOGGLE(state) {
@@ -47,6 +53,15 @@ export default new Vuex.Store({
         .then(categories => {
           console.log(categories);
           commit('SET_PRODUCT_CATEGORY', categories)
+        })
+    },
+
+    getProductDetail({commit}) {
+      Axios.get('http://localhost:8080/static/item.json')
+        .then(r => r.data)
+        .then(item => {
+          console.log(item);
+          commit('SET_PRODUCT_DETAIL', item)
         })
     },
     

@@ -6,15 +6,13 @@
 
       <!-- Page Content Holder -->
       <div id="content">
-
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" id="sidebarCollapse" @click="toggleNav" class="btn btn-info navbar-btn">
-                <i class="glyphicon glyphicon-align-left"></i>
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
                 <span>Toggle Sidebar</span>
               </button>
-              <img src="https://www.maskcarabeauty.com/images/maskcara-logo-black.png" class="logo" alt="">
             </div>
           </div>
         </nav>
@@ -61,8 +59,10 @@
     color: #999;
   }
 
-  ol, ul{
+  ol,
+  ul {
     margin-bottom: 0 !important;
+    list-style: none;
   }
 
   a,
@@ -73,7 +73,7 @@
     transition: all 0.3s;
   }
 
-  .logo{
+  .logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -81,12 +81,21 @@
   }
 
   .navbar {
-    padding: 15px 10px;
+    padding: 0px 10px;
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  button#sidebarCollapse {
+    padding: 20px;
+    margin: 0 !important;
+    background: #fff;
+    color: #2d2d2d;
+    border-right: 1px solid #ccc;
+    border-radius: 0;
   }
 
   .navbar-btn {
@@ -109,6 +118,7 @@
   .wrapper {
     display: flex;
     align-items: stretch;
+    background: #fff;
   }
 
   #sidebar {
@@ -213,7 +223,7 @@
 ----------------------------------------------------- */
 
   #content {
-    padding: 20px;
+    padding: 50px 0 0;
     min-height: 100vh;
     transition: all 0.3s;
     width: 100%;
