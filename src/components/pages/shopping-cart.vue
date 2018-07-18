@@ -1,0 +1,76 @@
+<template>
+  <div>
+    <div class="page-title">
+      <div class="container">
+        <h1>Shopping Cart</h1>
+      </div>
+    </div>
+    <router-link to='/'>
+    <button class="btn btn-default btn-cart">
+     BACK TO SHOPPING
+    </button>
+    </router-link>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>
+            <strong>Product</strong>
+          </td>
+          <td>
+            <strong>Quantity</strong>
+          </td>
+          <td>
+            <strong>Price</strong>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in cart" :key="index">
+          <td>{{ item.title }}</td>
+          <td>-</td>
+          <td>{{ item.price }}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" @click="removeFromCart(index)">&times;</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+<script>
+  export default {
+    name: 'shoppingCart',
+    mounted() {
+      this.$store.dispatch('getProductCategory');
+    },
+    computed: {
+      cart() {
+        return this.$store.getters.cart.map((cartItem) => {
+          return this.$store.getters.productCategory.items.find((productCategory) => {
+            return cartItem === productCategory.item_code;
+          });
+        });
+      },
+    },
+    methods: {
+      removeFromCart(index) {
+        this.$store.dispatch('removeCartItem', index);
+      },
+    }
+  };
+
+</script>
+<style scoped>
+  .btn-cart {
+    background-color: #a7bcd7 !important;
+    color: #fff !important;
+    padding: 10px 100px !important;
+    font-size: 14px !important;
+    margin: 20px auto !important;
+  }
+
+  .table{
+      margin: 0 20px !important;
+  }
+
+</style>

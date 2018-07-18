@@ -14,7 +14,8 @@
           <img v-bind:src="item.image" @click="showProductDetail">
           <p class="product-title">{{item.title}}</p>
           <p class="product-price">{{item.price}}</p>
-          <button class="btn btn-default btn-cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button>
+          <button class="btn btn-default btn-cart" @click="addToCart(item.item_code)">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button>
         </div>
       </li>
     </ul>
@@ -40,6 +41,9 @@
       productCategory() {
         return this.$store.getters.productCategory;
       },
+      newItem() {
+        return this.$store.getters.newItem
+      }
     },
     components: {
       'product-detail': ProductDetail
@@ -48,72 +52,15 @@
       showProductDetail() {
         //show product detail when a product is selected in category product list
         this.isProductList = !this.isProductList;
+      },
+      addToCart(item_code) {
+        this.$store.dispatch('addCartItem', item_code)
       }
     }
   }
 
 </script>
 <style>
-  .page-title {
-    width: 100%;
-    margin-bottom: 30px;
-    padding: 36px 0;
-    border-bottom: 1px solid #e1e7ec;
-    background-color: #f5f5f5;
-  }
-
-  .page-title h1,
-  .page-title h2,
-  .page-title h3 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.25;
-    text-align: center;
-  }
-
-  .thumbnail img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-
-  p.product-title {
-    text-align: center;
-  }
-
-  p.product-price {
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-  }
-
-  button.btn.btn-default.btn-cart {
-    display: block;
-    margin: auto;
-    border-color: #a7bcd7;
-    color: #a7bcd7;
-    padding: 4px 100px;
-    border-radius: 25px;
-    font-size: 12px;
-  }
-
-  ul.product-list {
-    list-style: none;
-    width: 100%;
-    padding: 10px 15px;
-  }
-
-  .thumbnail {
-    padding: 30px 4px !important;
-  }
-
-  @media (max-width: 768px) {
-    #page-title {
-      margin-left: -250px;
-      height: 100%;
-    }
-  }
+  
 
 </style>

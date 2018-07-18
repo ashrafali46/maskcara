@@ -26,7 +26,9 @@
     </ul>
 
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="description">{{productDetail.long_description}}</div>
+      <div role="tabpanel" class="tab-pane active" id="description">
+        <div v-html="productLongDesc"></div>
+      </div>
     </div>
 
   </div>
@@ -34,6 +36,11 @@
 <script>
   export default {
     name: 'product-detail',
+    data() {
+      return {
+        productDesc: ''
+      }
+    },
     mounted() {
       //when the component is loaded, trigger the api call from store
       this.$store.dispatch('getProductDetail')
@@ -41,6 +48,9 @@
     computed: {
       productDetail() {
         return this.$store.getters.productDetail;
+      },
+      productLongDesc() {
+        return this.productDetail.long_description;
       }
     },
   }

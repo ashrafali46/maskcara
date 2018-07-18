@@ -13,6 +13,9 @@
                 <i class="glyphicon glyphicon-menu-hamburger"></i>
                 <span>Toggle Sidebar</span>
               </button>
+              <router-link to="/cart">
+                <button class="btn btn-default pull-right">Cart ({{ getCartItem.length }})</button>
+              </router-link>
             </div>
           </div>
         </nav>
@@ -31,13 +34,21 @@
         isActive: false,
       }
     },
+    mounted() {
+      this.$store.dispatch('getCartItem')
+    },
+    computed: {
+      getCartItem() {
+        return this.$store.getters.cart;
+      },
+    },
     components: {
       'navigation': navigation,
     },
     methods: {
       toggleNav() {
         this.$store.dispatch('toggle')
-      }
+      },
     }
   }
 
@@ -227,6 +238,68 @@
     min-height: 100vh;
     transition: all 0.3s;
     width: 100%;
+  }
+
+  .page-title {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 36px 0;
+    border-bottom: 1px solid #e1e7ec;
+    background-color: #f5f5f5;
+  }
+
+  .page-title h1,
+  .page-title h2,
+  .page-title h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .thumbnail img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  p.product-title {
+    text-align: center;
+  }
+
+  p.product-price {
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
+  button.btn.btn-default.btn-cart {
+    display: block;
+    margin: auto;
+    border-color: #a7bcd7;
+    color: #a7bcd7;
+    padding: 4px 100px;
+    border-radius: 25px;
+    font-size: 12px;
+  }
+
+  ul.product-list {
+    list-style: none;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .thumbnail {
+    padding: 30px 4px !important;
+  }
+
+  @media (max-width: 768px) {
+    #page-title {
+      margin-left: -250px;
+      height: 100%;
+    }
   }
 
   /* ---------------------------------------------------

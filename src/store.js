@@ -9,6 +9,8 @@ export default new Vuex.Store({
     categories: [],
     productCategory: [],
     productDetail: [],
+    cart: [],
+    newItem: '',
     isActive: false,
   },
   getters: {
@@ -19,8 +21,26 @@ export default new Vuex.Store({
     categories: state => state.categories,
     productCategory: state => state.productCategory,
     productDetail: state => state.productDetail,
+
+    //item code cart
+    cart: state => state.cart,
   },
   mutations: {
+    //cart murations
+    GET_CART_ITEM(state, item){
+      state.newItem = item
+    },
+
+    ADD_CART_ITEM(state, item_code){
+      state.cart.push(item_code)
+    },
+
+    REMOVE_CART_ITEM(state, item){
+      var items = state.cart
+      items.splice(items.indexOf(item), 1)
+   },
+
+    //category mutations
     SET_CATEGORIES(state, categories) {
       state.categories = categories
     },
@@ -33,11 +53,24 @@ export default new Vuex.Store({
       state.productDetail = productDetail
     },
 
+    //navigation toggle
     TOGGLE(state) {
       state.isActive = !state.isActive;
     }
   },
   actions: {
+    getCartItem({commit}, item){
+      commit('GET_CART_ITEM', item)
+    },
+
+    addCartItem({commit}, item){
+      commit('ADD_CART_ITEM', item)
+    },
+
+    removeCartItem({commit}, item){
+      commit('REMOVE_CART_ITEM', item)
+    },
+
     getCategories({commit}) {
       Axios.get('http://localhost:8080/static/categories.json')
         .then(r => r.data)

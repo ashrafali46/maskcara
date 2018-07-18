@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Category from '@/components/pages/category'
-import ProductDetail from '@/components/pages/product-detail'
+import ShoppingCart from '@/components/pages/shopping-cart'
 
 Vue.use(Router)
 
@@ -14,9 +14,9 @@ export default new Router({
       component: Category
     },
     {
-      path: '/product-detail',
-      name: 'ProductDetail',
-      component: ProductDetail
+      path: '/cart',
+      name: 'ShoppingCart',
+      component: ShoppingCart
     }
   ]
 })
