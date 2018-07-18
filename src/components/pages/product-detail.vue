@@ -36,11 +36,6 @@
 <script>
   export default {
     name: 'product-detail',
-    data() {
-      return {
-        productDesc: ''
-      }
-    },
     mounted() {
       //when the component is loaded, trigger the api call from store
       this.$store.dispatch('getProductDetail')

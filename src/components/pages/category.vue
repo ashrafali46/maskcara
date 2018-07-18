@@ -10,10 +10,13 @@
 
     <ul class="product-list" v-if="isProductList">
       <li v-for="(item, index) in productCategory.items" :key="index">
+
         <div class="thumbnail">
-          <img v-bind:src="item.image" @click="showProductDetail">
-          <p class="product-title">{{item.title}}</p>
-          <p class="product-price">{{item.price}}</p>
+          <router-link :to="{ path: '/product/' + item.item_code, params: {item_code: item.item_code } }">
+            <img v-bind:src="item.image">
+            <p class="product-title">{{item.title}}</p>
+            <p class="product-price">{{item.price}}</p>
+          </router-link>
           <button class="btn btn-default btn-cart" @click="addToCart(item.item_code)">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button>
         </div>
@@ -61,6 +64,6 @@
 
 </script>
 <style>
-  
+
 
 </style>

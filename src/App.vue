@@ -11,10 +11,9 @@
             <div class="navbar-header">
               <button type="button" id="sidebarCollapse" @click="toggleNav" class="btn btn-info navbar-btn">
                 <i class="glyphicon glyphicon-menu-hamburger"></i>
-                <span>Toggle Sidebar</span>
               </button>
               <router-link to="/cart">
-                <button class="btn btn-default pull-right">Cart ({{ getCartItem.length }})</button>
+                <button class="btn btn-default pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart ({{ getCartItem.length }})</button>
               </router-link>
             </div>
           </div>

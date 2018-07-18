@@ -10,7 +10,7 @@
      BACK TO SHOPPING
     </button>
     </router-link>
-    <table class="table table-striped">
+    <table class="table table-striped" v-if="cart.length != 0">
       <thead>
         <tr>
           <td>
@@ -35,6 +35,9 @@
         </tr>
       </tbody>
     </table>
+    <div v-else>
+        <p class="info">Your shopping cart is empty</p>
+    </div>
   </div>
 </template>
 <script>
@@ -71,6 +74,10 @@
 
   .table{
       margin: 0 20px !important;
+  }
+
+  .info{
+      margin: 30px 40px;
   }
 
 </style>
