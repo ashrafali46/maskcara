@@ -13,7 +13,7 @@
                 <i class="glyphicon glyphicon-menu-hamburger"></i>
               </button>
               <router-link to="/cart">
-                <button class="btn btn-default pull-right"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart ({{ getCartItem.length }})</button>
+                <button class="btn btn-default pull-right btn-cart-view"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> {{ getCartItem.length }}</button>
               </router-link>
             </div>
           </div>
@@ -167,8 +167,8 @@
   }
 
   #sidebar ul li a:hover {
-    color: #374250;
-    background: #fff;
+    color: #fff;
+    /* background: #fff; */
   }
 
   #sidebar ul li.active>a,
@@ -226,7 +226,10 @@
     color: #fff !important;
   }
 
-
+.btn-cart-view{
+  border-radius: 25px;
+  padding: 10px 15px;
+}
 
   /* ---------------------------------------------------
     CONTENT STYLE

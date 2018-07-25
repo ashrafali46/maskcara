@@ -6,37 +6,48 @@
       </div>
     </div>
     <router-link to='/'>
-    <button class="btn btn-default btn-cart">
-     BACK TO SHOPPING
-    </button>
+      <button class="btn btn-default btn-cart">
+        BACK TO SHOPPING
+      </button>
     </router-link>
-    <table class="table table-striped" v-if="cart.length != 0">
-      <thead>
-        <tr>
-          <td>
-            <strong>Product</strong>
-          </td>
-          <td>
-            <strong>Quantity</strong>
-          </td>
-          <td>
-            <strong>Price</strong>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, index) in cart" :key="index">
-          <td>{{ item.title }}</td>
-          <td>-</td>
-          <td>{{ item.price }}</td>
-          <td>
-            <button class="btn btn-sm btn-danger" @click="removeFromCart(index)">&times;</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div v-if="cart.length != 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>
+              <strong>Product</strong>
+            </td>
+            <td>
+              <strong>Quantity</strong>
+            </td>
+            <td>
+              <strong>Price</strong>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in cart" :key="index">
+            <td>{{ item.title }}</td>
+            <td>-</td>
+            <td>{{ item.price }}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" @click="removeFromCart(index)">&times;</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="well">
+        <router-link to='/checkout'>
+          <button class="btn btn-default btn-cart">
+            PROCEED TO CHECKOUT
+          </button>
+        </router-link>
+      </div>
+
+    </div>
     <div v-else>
-        <p class="info">Your shopping cart is empty</p>
+      <p class="info">Your shopping cart is empty</p>
     </div>
   </div>
 </template>
@@ -67,17 +78,17 @@
   .btn-cart {
     background-color: #a7bcd7 !important;
     color: #fff !important;
-    padding: 10px 100px !important;
+    padding: 10px 80px !important;
     font-size: 14px !important;
     margin: 20px auto !important;
   }
 
-  .table{
-      margin: 0 20px !important;
+  .table {
+    margin: 0px !important;
   }
 
-  .info{
-      margin: 30px 40px;
+  .info {
+    margin: 30px 40px;
   }
 
 </style>
