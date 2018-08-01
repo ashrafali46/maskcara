@@ -12,8 +12,13 @@
               <button type="button" id="sidebarCollapse" @click="toggleNav" class="btn btn-info navbar-btn">
                 <i class="glyphicon glyphicon-menu-hamburger"></i>
               </button>
+              <a href="#" class="navbar-left">
+                <img src="https://www.maskcarabeauty.com/images/maskcara-logo-black.png" class="logo" alt="">
+              </a>
+
               <router-link to="/cart">
-                <button class="btn btn-default pull-right btn-cart-view"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> {{ getCartItem.length }}</button>
+                <button class="btn btn-default pull-right btn-cart-view">
+                  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> {{ getCartItem.length }}</button>
               </router-link>
             </div>
           </div>
@@ -73,6 +78,7 @@
   ul {
     margin-bottom: 0 !important;
     list-style: none;
+    padding: 0;
   }
 
   a,
@@ -84,10 +90,10 @@
   }
 
   .logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+    margin-left: 10px;
+    /* margin-right: auto; */
+    width: 28%;
+    /* text-align: center; */
   }
 
   .navbar {
@@ -226,17 +232,18 @@
     color: #fff !important;
   }
 
-.btn-cart-view{
-  border-radius: 25px;
-  padding: 10px 15px;
-}
+  .btn-cart-view {
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin-top: 9px;
+  }
 
   /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
 
   #content {
-    padding: 50px 0 0;
+    padding: 0;
     min-height: 100vh;
     transition: all 0.3s;
     width: 100%;

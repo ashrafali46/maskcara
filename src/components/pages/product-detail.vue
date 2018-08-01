@@ -45,9 +45,18 @@
         return this.$store.getters.productDetail;
       },
       productLongDesc() {
-        return this.productDetail.long_description;
+        var decodedHtml = this.htmlDecode(this.productDetail.long_description);
+        return decodedHtml;
       }
     },
+    methods: {
+      htmlDecode(input) {
+        var e = document.createElement('div');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+      }
+    }
   }
 
 </script>
@@ -84,6 +93,10 @@
 
   ul.nav.nav-tabs {
     margin-top: 25px;
+  }
+
+  ol, ul{
+    padding: 0 !important;
   }
 
 </style>
