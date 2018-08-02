@@ -116,7 +116,7 @@
           </tr>
           <tr>
             <td> <strong>  Order total: </strong></td>
-            <td><strong>${{total}}</strong></td>
+            <td><strong>${{total}}</strong> </td>
           </tr>
         </table>
       </div>
