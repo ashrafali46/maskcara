@@ -9,10 +9,12 @@
     </div>
     <div class="container">
       <h2>Checkout</h2>
+      <br>
       <div class="panel panel-default">
         <div class="panel-heading">Shipping Information</div>
         <div class="panel-body">
           <h4>Shipping Address</h4>
+          <br>
           <div class="form-group">
             <label>First Name</label>
             <input type="text" class="form-control input-login" placeholder="First Name">
@@ -54,24 +56,26 @@
         <div class="panel-heading">Billing Information</div>
         <div class="panel-body">
           <h4>Payment Method</h4>
+          <br>
           <div class="form-group">
             <label>Name on card</label>
             <input type="text" class="form-control input-login" placeholder="Name on card">
           </div>
+          <h2><i class="glyphicon glyphicon-credit-card "></i></h2>
           <div class="form-group">
             <label>Card number</label>
             <input type="text" class="form-control input-login" placeholder="Card number">
           </div>
           <div class="form-group">
-            <label>Month</label>
+            <label>Month *</label>
             <input type="text" class="form-control input-login" placeholder="Month">
           </div>
           <div class="form-group">
-            <label>Year</label>
+            <label>Year * </label>
             <input type="text" class="form-control input-login" placeholder="Year">
           </div>
           <div class="form-group">
-            <label>CVV/CVC</label>
+            <label>CVV/CVC *</label>
             <input type="text" class="form-control input-login" placeholder="CVV/CVC">
           </div>
         </div>
@@ -89,24 +93,24 @@
         </button>
 
         <table>
-           <tr>
-               <td>Subtotal:</td>
-           </tr>
-           <tr>
-               <td>Items:</td>
-           </tr>
-           <tr>
-               <td>Shipping & Handling:</td>
-           </tr>
-           <tr>
-               <td>Total before tax:</td>
-           </tr>
-           <tr>
-               <td>Estimated tax:</td>
-           </tr>
-           <tr>
-               <td>Order total:</td>
-           </tr>
+          <tr>
+            <td>Subtotal:</td>
+          </tr>
+          <tr>
+            <td>Items:</td>
+          </tr>
+          <tr>
+            <td>Shipping & Handling:</td>
+          </tr>
+          <tr>
+            <td>Total before tax:</td>
+          </tr>
+          <tr>
+            <td>Estimated tax:</td>
+          </tr>
+          <tr>
+            <td>Order total:</td>
+          </tr>
         </table>
       </div>
     </div>
@@ -127,8 +131,8 @@
     background: #fff;
   }
 
-  .well-dark{
-      background: #f8f9fa !important;
+  .well-dark {
+    background: #f8f9fa !important;
   }
 
   h2.title {
@@ -156,28 +160,8 @@
     color: #606975;
   }
 
-  ::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: #606975;
-    padding-left: 10px;
-  }
-
-  :-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #606975;
-    padding-left: 10px;
-  }
-
-  ::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #606975;
-    padding-left: 10px;
-  }
-
-  :-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: #606975;
-    padding-left: 10px;
+  input {
+    text-indent: 10px;
   }
 
   .join-now {
@@ -188,13 +172,13 @@
     font-weight: 100;
   }
 
-  td{
-      text-align: left !important;
+  td {
+    text-align: left !important;
   }
 
-  tr{
-      border-bottom: 1px solid #ccc;
-      width: 100%;
+  tr {
+    border-bottom: 1px solid #ccc;
+    width: 100%;
   }
 
 </style>

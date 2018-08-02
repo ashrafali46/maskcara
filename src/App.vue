@@ -12,7 +12,7 @@
               <button type="button" id="sidebarCollapse" @click="toggleNav" class="btn btn-info navbar-btn">
                 <i class="glyphicon glyphicon-menu-hamburger"></i>
               </button>
-              <a href="#" class="navbar-left">
+              <a href="/" class="navbar-left">
                 <img src="https://www.maskcarabeauty.com/images/maskcara-logo-black.png" class="logo" alt="">
               </a>
 
@@ -271,7 +271,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 100%;
   }
 
   p.product-title {

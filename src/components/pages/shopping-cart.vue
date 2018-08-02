@@ -5,7 +5,7 @@
         <h1>Shopping Cart</h1>
       </div>
     </div>
-    <router-link to='/'>
+    <router-link to='/category/23'>
       <button class="btn btn-default btn-cart">
         BACK TO SHOPPING
       </button>
@@ -27,18 +27,30 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in cart" :key="index">
-            <td>{{ item.title }}</td>
-            <td>-</td>
-            <td>{{ item.price }}</td>
             <td>
-              <button class="btn btn-sm btn-danger" @click="removeFromCart(index)">&times;</button>
+              <div class="media">
+                <div class="media-left">
+                  <img class="media-object" height="64" width="64" :src="item.image">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ item.title }}</h4>
+                  <p>{{item.short_description}}</p>
+                </div>
+              </div>
+            </td>
+            <td>-</td>
+            <td>
+              <strong>{{ item.price }}</strong>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-default" @click="removeFromCart(index)">&times;</button>
             </td>
           </tr>
         </tbody>
       </table>
 
       <div class="well">
-        <router-link to='/checkout'>
+        <router-link to='/login'>
           <button class="btn btn-default btn-cart">
             PROCEED TO CHECKOUT
           </button>

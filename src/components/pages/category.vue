@@ -18,7 +18,8 @@
             <p class="product-price">{{item.price}}</p>
           </router-link>
           <button class="btn btn-default btn-cart" @click="addToCart(item.item_code)">
-            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button>
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART
+          </button>
         </div>
       </li>
     </ul>

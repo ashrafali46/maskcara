@@ -5,6 +5,7 @@ import Product from '@/components/pages/product-detail'
 import ShoppingCart from '@/components/pages/shopping-cart'
 import Login from '@/components/pages/login'
 import Checkout from '@/components/pages/checkout'
+import ThankYou from '@/components/pages/thank-you'
 
 Vue.use(Router)
 
@@ -15,7 +16,7 @@ export default new Router({
       name: 'Login',
       component: Login
     }, {
-      path: '/',
+      path: '/category/:cat_id',
       name: 'Category',
       component: Category
     },
@@ -33,6 +34,11 @@ export default new Router({
       path: '/checkout',
       name: 'Checkout',
       component: Checkout
+    },
+    {
+      path: '/thank-you',
+      name: 'ThankYou',
+      component: ThankYou
     },
 
   ]

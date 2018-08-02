@@ -8,9 +8,11 @@
       <ul class="list-unstyled components" v-for="(parent, index) in navCategories.data" :key="index">
         <li>
           <a data-toggle="collapse" v-bind:href="'#id' + parent.id" aria-expanded="false">{{parent.title}}</a>
-          <ul class="collapse" v-bind:id="'id'+ parent.id" >
+          <ul class="collapse" v-bind:id="'id'+ parent.id">
             <li v-for="(child, index) in parent.children" :key="index">
-              <a href="#">{{child.title}}</a>
+              <router-link :to="{ path: '/category/' + child.id, params: {cat_id: child.id } }">
+               {{child.title}}
+              </router-link>
             </li>
           </ul>
         </li>
@@ -25,13 +27,13 @@
       //when the component is loaded, trigger the api call from store
       this.$store.dispatch('getCategories')
     },
-    computed:{
-        isActive(){
-            return this.$store.getters.isActive;
-        },
-        navCategories(){
-            return this.$store.getters.categories;
-        }
+    computed: {
+      isActive() {
+        return this.$store.getters.isActive;
+      },
+      navCategories() {
+        return this.$store.getters.categories;
+      }
     },
   }
 
