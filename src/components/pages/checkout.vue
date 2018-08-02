@@ -61,7 +61,9 @@
             <label>Name on card</label>
             <input type="text" class="form-control input-login" placeholder="Name on card">
           </div>
-          <h2><i class="glyphicon glyphicon-credit-card "></i></h2>
+          <h2>
+            <i class="glyphicon glyphicon-credit-card "></i>
+          </h2>
           <div class="form-group">
             <label>Card number</label>
             <input type="text" class="form-control input-login" placeholder="Card number">
@@ -91,25 +93,30 @@
         <button class="btn btn-default">
           <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> PLACE YOUR ORDER
         </button>
-
-        <table>
+        <table class="table">
           <tr>
             <td>Subtotal:</td>
+            <td>${{total}}</td>
           </tr>
           <tr>
-            <td>Items:</td>
+            <td>Items: </td>
+            <td>{{cartLength}}</td>
           </tr>
           <tr>
             <td>Shipping & Handling:</td>
+            <td></td>
           </tr>
           <tr>
             <td>Total before tax:</td>
+            <td></td>
           </tr>
           <tr>
             <td>Estimated tax:</td>
+            <td></td>
           </tr>
           <tr>
-            <td>Order total:</td>
+            <td> <strong>  Order total: </strong></td>
+            <td><strong>${{total}}</strong></td>
           </tr>
         </table>
       </div>
@@ -118,7 +125,22 @@
 </template>
 <script>
   export default {
-    name: "login"
+    name: "login",
+    computed: {
+      cart() {
+        return this.$store.getters.cart.map((cartItem) => {
+          return this.$store.getters.productCategory.items.find((productCategory) => {
+            return cartItem === productCategory.item_code;
+          });
+        });
+      },
+      total() {
+        return this.cart.reduce((acc, cur) => acc + parseFloat(cur.price.toString().replace("$", "")), 0);
+      },
+      cartLength() {
+        return this.cart.length;
+      }
+    }
   }
 
 </script>
@@ -174,11 +196,6 @@
 
   td {
     text-align: left !important;
-  }
-
-  tr {
-    border-bottom: 1px solid #ccc;
-    width: 100%;
   }
 
 </style>

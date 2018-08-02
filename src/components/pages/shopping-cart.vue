@@ -57,7 +57,7 @@
         </p>
       </div>
       <hr>
-      <div class="well">
+      <div class="well well-checkout">
         <div class="container">
           <p class="small-sub">
             <strong>Subtotal: ({{cartLength}} items):
@@ -139,7 +139,7 @@
     font-size: 14px;
   }
 
-  .well {
+  .well-checkout {
     min-height: 20px;
     padding: 5px 0px;
     margin-bottom: 20px;
