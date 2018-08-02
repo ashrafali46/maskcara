@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in cart" :key="index">
+          <tr v-for="(item, index) in cart" :key="index" track-by="index">
             <td>
               <div class="media">
                 <div class="media-left">
@@ -48,8 +48,23 @@
           </tr>
         </tbody>
       </table>
-
+      <hr>
+      <div class="container">
+        <p class="small-sub">
+          <strong>Subtotal: ({{cartLength}} items):
+            <span class="total"> ${{total}}</span>
+          </strong>
+        </p>
+      </div>
+      <hr>
       <div class="well">
+        <div class="container">
+          <p class="small-sub">
+            <strong>Subtotal: ({{cartLength}} items):
+              <span class="total"> ${{total}}</span>
+            </strong>
+          </p>
+        </div>
         <router-link to='/login'>
           <button class="btn btn-default btn-cart">
             PROCEED TO CHECKOUT
@@ -77,6 +92,15 @@
           });
         });
       },
+      total() {
+        return this.cart.reduce((acc, cur) => acc + parseFloat(cur.price.toString().replace("$", "")), 0);
+      },
+      cartLength() {
+        return this.cart.length;
+      }
+    },
+    filters: {
+      dollars: num => `$${num / 100}`,
     },
     methods: {
       removeFromCart(index) {
@@ -101,6 +125,30 @@
 
   .info {
     margin: 30px 40px;
+  }
+
+  .total {
+    color: red;
+  }
+
+  strong {
+    color: #606975;
+  }
+
+  .small-sub {
+    font-size: 14px;
+  }
+
+  .well {
+    min-height: 20px;
+    padding: 5px 0px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    margin: 15px;
   }
 
 </style>
