@@ -62,7 +62,7 @@
         let toast = this.$toasted.show("Product successfully added to cart", {
           theme: "outline",
           position: "top-right",
-          duration: 10000000,
+          duration: 3000,
           fullWidth: true
         });
 
