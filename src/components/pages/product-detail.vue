@@ -16,7 +16,7 @@
       <option value="">2</option>
       <option value="">3</option>
     </select>
-    <button class="btn btn-default btn-cart">
+    <button class="btn btn-default btn-cart" @click="addToCart(productDetail.item_code)">
       <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button>
 
     <ul class="nav nav-tabs" role="tablist">
@@ -50,13 +50,25 @@
       }
     },
     methods: {
+      //escape html for v-html
       htmlDecode(input) {
         var e = document.createElement('div');
         e.innerHTML = input;
         // handle case of empty input
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+      },
+      addToCart(item_code) {
+        //show toast
+        let toast = this.$toasted.show("Product successfully added to cart", {
+          theme: "outline",
+          position: "top-right",
+          duration: 5000
+        });
+
+        this.$store.dispatch('addCartItem', item_code)
       }
-    }
+    },
+
   }
 
 </script>
@@ -95,7 +107,8 @@
     margin-top: 25px;
   }
 
-  ol, ul{
+  ol,
+  ul {
     padding: 0 !important;
   }
 

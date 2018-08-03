@@ -58,6 +58,14 @@
         this.isProductList = !this.isProductList;
       },
       addToCart(item_code) {
+        //show toast
+        let toast = this.$toasted.show("Product successfully added to cart", {
+          theme: "outline",
+          position: "top-right",
+          duration: 10000000,
+          fullWidth: true
+        });
+
         this.$store.dispatch('addCartItem', item_code)
       }
     }
