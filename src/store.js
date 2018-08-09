@@ -3,13 +3,16 @@ import Vuex from 'vuex'
 import Axios from '../node_modules/axios';
 
 Vue.use(Vuex);
-
+//get the previous cart items
+let cart = window.localStorage.getItem('cart');
+let cartCount = window.localStorage.getItem('cartCount');
 export default new Vuex.Store({
   state: {
     categories: [],
     productCategory: [],
     productDetail: [],
-    cart: [],
+    cart: cart ? JSON.parse(cart) : [],
+    cartCount: cartCount ? parseInt(cartCount) : 0,
     newItem: '',
     isActive: false,
   },
@@ -26,19 +29,39 @@ export default new Vuex.Store({
     cart: state => state.cart,
   },
   mutations: {
+
+    saveCart(state) {
+      window.localStorage.setItem('cart', JSON.stringify(state.cart));
+      window.localStorage.setItem('cartCount', state.cartCount);
+    },
     //cart murations
-    GET_CART_ITEM(state, item){
+    GET_CART_ITEM(state, item) {
       state.newItem = item
     },
 
-    ADD_CART_ITEM(state, item_code){
-      state.cart.push(item_code)
+    ADD_CART_ITEM(state, item) {
+
+      let found = state.cart.find(product => product.item_code == item.item_code);
+      //check duplicate item in cart
+      if (found) {
+        found.quantity++;
+        found.totalPrice = found.quantity * found.price_raw;
+      } else {
+        state.cart.push(item);
+        
+        Vue.set(item, 'quantity', 1);
+        Vue.set(item, 'totalPrice', item.price_raw);
+      }
+
+      state.cartCount++;
+      this.commit('saveCart');
     },
 
-    REMOVE_CART_ITEM(state, item){
+    REMOVE_CART_ITEM(state, item) {
       var items = state.cart
       items.splice(items.indexOf(item), 1)
-   },
+      this.commit('saveCart');
+    },
 
     //category mutations
     SET_CATEGORIES(state, categories) {
@@ -59,19 +82,27 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getCartItem({commit}, item){
+    getCartItem({
+      commit
+    }, item) {
       commit('GET_CART_ITEM', item)
     },
 
-    addCartItem({commit}, item){
+    addCartItem({
+      commit
+    }, item) {
       commit('ADD_CART_ITEM', item)
     },
 
-    removeCartItem({commit}, item){
+    removeCartItem({
+      commit
+    }, item) {
       commit('REMOVE_CART_ITEM', item)
     },
 
-    getCategories({commit}) {
+    getCategories({
+      commit
+    }) {
       Axios.get('http://localhost:8080/static/categories.json')
         .then(r => r.data)
         .then(categories => {
@@ -80,7 +111,9 @@ export default new Vuex.Store({
         })
     },
 
-    getProductCategory({commit}) {
+    getProductCategory({
+      commit
+    }) {
       Axios.get('http://localhost:8080/static/category.json')
         .then(r => r.data)
         .then(categories => {
@@ -89,7 +122,9 @@ export default new Vuex.Store({
         })
     },
 
-    getProductDetail({commit}) {
+    getProductDetail({
+      commit
+    }) {
       Axios.get('http://localhost:8080/static/item.json')
         .then(r => r.data)
         .then(item => {
@@ -97,9 +132,9 @@ export default new Vuex.Store({
           commit('SET_PRODUCT_DETAIL', item)
         })
     },
-    
-    toggle(context){
-        context.commit('TOGGLE')
+
+    toggle(context) {
+      context.commit('TOGGLE')
     }
   }
 })

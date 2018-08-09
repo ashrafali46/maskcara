@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Category from '@/components/pages/category'
 import Product from '@/components/pages/product-detail'
-import ShoppingCart from '@/components/pages/shopping-cart'
+import Cart from '@/components/pages/cart'
 import Login from '@/components/pages/login'
 import Checkout from '@/components/pages/checkout'
 import ThankYou from '@/components/pages/thank-you'
@@ -27,8 +27,8 @@ export default new Router({
     },
     {
       path: '/cart',
-      name: 'ShoppingCart',
-      component: ShoppingCart
+      name: 'Cart',
+      component: Cart
     },
     {
       path: '/checkout',

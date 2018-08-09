@@ -96,7 +96,7 @@
         <table class="table">
           <tr>
             <td>Subtotal:</td>
-            <td>${{total}}</td>
+            <td>${{totalPrice}}</td>
           </tr>
           <tr>
             <td>Items: </td>
@@ -116,7 +116,7 @@
           </tr>
           <tr>
             <td> <strong>  Order total: </strong></td>
-            <td><strong>${{total}}</strong> </td>
+            <td><strong>${{totalPrice}}</strong> </td>
           </tr>
         </table>
       </div>
@@ -125,20 +125,17 @@
 </template>
 <script>
   export default {
-    name: "login",
+    name: "checkout",
     computed: {
-      cart() {
-        return this.$store.getters.cart.map((cartItem) => {
-          return this.$store.getters.productCategory.items.find((productCategory) => {
-            return cartItem === productCategory.item_code;
-          });
-        });
-      },
-      total() {
-        return this.cart.reduce((acc, cur) => acc + parseFloat(cur.price.toString().replace("$", "")), 0);
+     totalPrice() {
+        let total = 0;
+        for (let item of this.$store.state.cart) {
+          total += item.totalPrice;
+        }
+        return total;
       },
       cartLength() {
-        return this.cart.length;
+        return this.$store.state.cart.length;
       }
     }
   }

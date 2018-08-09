@@ -17,7 +17,7 @@
             <p class="product-title">{{item.title}}</p>
             <p class="product-price">{{item.price}}</p>
           </router-link>
-          <button class="btn btn-default btn-cart" @click="addToCart(item.item_code)">
+          <button class="btn btn-default btn-cart" @click="addToCart(item)">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART
           </button>
         </div>
@@ -57,16 +57,16 @@
         //show product detail when a product is selected in category product list
         this.isProductList = !this.isProductList;
       },
-      addToCart(item_code) {
+      addToCart(item) {
         //show toast
         let toast = this.$toasted.show("Product successfully added to cart", {
           theme: "outline",
           position: "top-right",
-          duration: 3000,
+          duration: 500,
           fullWidth: true
         });
 
-        this.$store.dispatch('addCartItem', item_code)
+        this.$store.dispatch('addCartItem', item)
       }
     }
   }

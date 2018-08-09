@@ -10,7 +10,7 @@
         BACK TO SHOPPING
       </button>
     </router-link>
-    <div v-if="cart.length != 0">
+    <div v-if="$store.state.cart.length > 0">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in cart" :key="index" track-by="index">
+          <tr v-for="item in $store.state.cart" :key="item.id" track-by="index">
             <td>
               <div class="media">
                 <div class="media-left">
@@ -38,12 +38,12 @@
                 </div>
               </div>
             </td>
-            <td>-</td>
+            <td>{{ item.quantity }}</td>
             <td>
-              <strong>{{ item.price }}</strong>
+              <strong>${{ item.totalPrice }}</strong>
             </td>
             <td>
-              <button class="btn btn-sm btn-default" @click="removeFromCart(index)">&times;</button>
+              <button class="btn btn-sm btn-default" @click="removeFromCart(item)">&times;</button>
             </td>
           </tr>
         </tbody>
@@ -52,7 +52,7 @@
       <div class="container">
         <p class="small-sub">
           <strong>Subtotal: ({{cartLength}} items):
-            <span class="total"> ${{total}}</span>
+            <span class="total"> ${{totalPrice}}</span>
           </strong>
         </p>
       </div>
@@ -61,7 +61,7 @@
         <div class="container">
           <p class="small-sub">
             <strong>Subtotal: ({{cartLength}} items):
-              <span class="total"> ${{total}}</span>
+              <span class="total"> ${{totalPrice}}</span>
             </strong>
           </p>
         </div>
@@ -80,32 +80,33 @@
 </template>
 <script>
   export default {
-    name: 'shoppingCart',
+    name: 'cart',
     mounted() {
       this.$store.dispatch('getProductCategory');
     },
     computed: {
-      cart() {
-        return this.$store.getters.cart.map((cartItem) => {
-          return this.$store.getters.productCategory.items.find((productCategory) => {
-            return cartItem === productCategory.item_code;
-          });
-        });
-      },
-      total() {
-        return this.cart.reduce((acc, cur) => acc + parseFloat(cur.price.toString().replace("$", "")), 0);
+      // cart() {
+      //   return this.$store.getters.cart.map((cartItem) => {
+      //     return this.$store.getters.productCategory.items.find((productCategory) => {
+      //       return cartItem === productCategory.item_code;
+      //     });
+      //   });
+      // },
+      totalPrice() {
+        let total = 0;
+        for (let item of this.$store.state.cart) {
+          total += item.totalPrice;
+        }
+        return total;
       },
       cartLength() {
-        return this.cart.length;
+        return this.$store.state.cart.length;
       }
     },
-    filters: {
-      dollars: num => `$${num / 100}`,
-    },
     methods: {
-      removeFromCart(index) {
-        this.$store.dispatch('removeCartItem', index);
-      },
+      removeFromCart(item) {
+        this.$store.commit('REMOVE_CART_ITEM', item);
+    }
     }
   };
 

@@ -18,7 +18,7 @@
 
               <router-link to="/cart">
                 <button class="btn btn-default pull-right btn-cart-view">
-                  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> {{ getCartItem.length }}</button>
+                  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ({{cartCount}})</button>
               </router-link>
             </div>
           </div>
@@ -42,8 +42,8 @@
       this.$store.dispatch('getCartItem')
     },
     computed: {
-      getCartItem() {
-        return this.$store.getters.cart;
+      cartCount() {
+        return this.$store.getters.cart.length;
       },
     },
     components: {

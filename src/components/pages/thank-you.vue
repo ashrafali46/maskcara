@@ -17,7 +17,7 @@
 </template>
 <script>
   export default {
-    name: "ThankYou"
+    name: "thankYou"
   }
 
 </script>

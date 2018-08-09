@@ -16,7 +16,7 @@
       <option value="">2</option>
       <option value="">3</option>
     </select>
-    <button class="btn btn-default btn-cart" @click="addToCart(productDetail.item_code)">
+    <button class="btn btn-default btn-cart" @click="addToCart(productDetail)">
       <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button>
 
     <ul class="nav nav-tabs" role="tablist">
@@ -35,7 +35,7 @@
 </template>
 <script>
   export default {
-    name: 'product-detail',
+    name: 'productDetail',
     mounted() {
       //when the component is loaded, trigger the api call from store
       this.$store.dispatch('getProductDetail')
