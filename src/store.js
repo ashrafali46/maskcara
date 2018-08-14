@@ -48,7 +48,7 @@ export default new Vuex.Store({
         found.totalPrice = found.quantity * found.price_raw;
       } else {
         state.cart.push(item);
-        
+
         Vue.set(item, 'quantity', 1);
         Vue.set(item, 'totalPrice', item.price_raw);
       }
@@ -103,7 +103,7 @@ export default new Vuex.Store({
     getCategories({
       commit
     }) {
-      Axios.get('http://localhost:8080/static/categories.json')
+      Axios.get('/static/categories.json')
         .then(r => r.data)
         .then(categories => {
           //console.log(categories);
@@ -114,7 +114,7 @@ export default new Vuex.Store({
     getProductCategory({
       commit
     }) {
-      Axios.get('http://localhost:8080/static/category.json')
+      Axios.get('/static/category.json')
         .then(r => r.data)
         .then(categories => {
           console.log(categories);
@@ -125,7 +125,7 @@ export default new Vuex.Store({
     getProductDetail({
       commit
     }) {
-      Axios.get('http://localhost:8080/static/item.json')
+      Axios.get('/static/item.json')
         .then(r => r.data)
         .then(item => {
           console.log(item);
